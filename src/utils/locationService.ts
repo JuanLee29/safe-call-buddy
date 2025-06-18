@@ -31,8 +31,8 @@ export const getLocation = (): Promise<string> => {
       },
       {
         enableHighAccuracy: true,
-        timeout: 10000,
-        maximumAge: 300000 // 5 minutes
+        timeout: 15000,
+        maximumAge: 60000 // 1 minute
       }
     );
   });
@@ -41,8 +41,6 @@ export const getLocation = (): Promise<string> => {
 export const getLocationWithAddress = async (): Promise<string> => {
   try {
     const coordinates = await getLocation();
-    // In a real app, you would use a geocoding service here
-    // For now, we'll just return the coordinates
     return `Coordinates: ${coordinates}`;
   } catch (error) {
     throw error;
